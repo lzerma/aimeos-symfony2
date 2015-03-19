@@ -18,7 +18,7 @@ before_script:
   - composer require "symfony/symfony:${SYMFONY_VERSION}"
 
 script:
-  - phpunit
+  - phpunit --coverage-clover coverage.xml
 
 after_success:
 #  - php vendor/bin/coveralls
