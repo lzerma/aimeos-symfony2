@@ -186,7 +186,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
-		$client->getContainer()->get('session')->migrate(true);
+		$client->getContainer()->get('session')->invalidate();
 
 		$crawler = $this->_goToSummary( $client );
 
