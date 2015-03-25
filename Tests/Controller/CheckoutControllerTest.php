@@ -13,6 +13,8 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
+
 		$crawler = $client->request( 'GET', '/unittest/de/EUR/list' );
 
 		$link = $crawler->filter( '.catalog-list-items .product a:contains("Unittest: Bundle")' )->link();
@@ -80,6 +82,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -129,6 +132,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -148,6 +152,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -167,6 +172,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -186,7 +192,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
-		$client->getContainer()->get('session')->invalidate();
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -206,6 +212,7 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
 
 		$crawler = $this->_goToSummary( $client );
 
@@ -225,6 +232,8 @@ class CheckoutControllerTest extends WebTestCase
 			'PHP_AUTH_USER' => 'UTC001',
 			'PHP_AUTH_PW'   => 'unittest',
 		) );
+		$client->insulate();
+
 		$crawler = $client->request( 'GET', '/unittest/de/EUR/list' );
 
 		$link = $crawler->filter( '.catalog-list-items .product a:contains("Unittest: Bundle")' )->link();
@@ -274,6 +283,7 @@ class CheckoutControllerTest extends WebTestCase
 	public function testUpdate()
 	{
 		$client = static::createClient();
+		$client->insulate();
 		$client->request( 'GET', '/unittest/de/EUR/update' );
 
 		$this->assertEquals( 200, $client->getResponse()->getStatusCode() );
