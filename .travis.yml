@@ -18,7 +18,8 @@ before_script:
   - composer require "symfony/symfony:${SYMFONY_VERSION}"
 
 script:
-  - phpunit --process-isolation --coverage-clover coverage.xml
+  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; COVERAGE="--coverage-clover coverage.xml"; ISOLATION="--process-isolation"; fi
+  - phpunit $COVERAGE $ISOLATION
 
 after_success:
 #  - php vendor/bin/coveralls
